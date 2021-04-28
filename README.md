@@ -37,7 +37,7 @@ npm install -g nodemon
 
 cd $HOME/fabric-samples/E_voting_Blockchain/application-javascript 
 
-npm instal --save express
+npm install --save express
 
 
 
