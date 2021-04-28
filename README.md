@@ -22,6 +22,8 @@ cd $HOME/fabric-samples
 
 git clone https://github.com/sani-1023/E_voting_Blockchain
 
+# necessary library installation
+
 cd $HOME/fabric-samples/E_voting_Blockchain/chaincode-javascript
 npm install
 
