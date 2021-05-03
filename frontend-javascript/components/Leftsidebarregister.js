@@ -14,17 +14,18 @@ import {
     TeamOutlined,
     UploadOutlined, UserAddOutlined,
     UserOutlined,
+    HomeFilled,
     VideoCameraOutlined
 } from "@ant-design/icons";
 
 const {Sider} = Layout;
 
 
-export default function LeftSideBarAddcandidate() {
+export default function Leftsidebarregister() {
 
     const router =  useRouter();
 
-    async function logout() {
+   /* async function logout() {
         // console.log("logout started");
 
         await fetch("http://localhost:3000/adminLogOut", {
@@ -38,7 +39,7 @@ export default function LeftSideBarAddcandidate() {
 
         await router.push("/");
     }
-    ///
+    /// */
 
 
     return (
@@ -51,32 +52,16 @@ export default function LeftSideBarAddcandidate() {
             }}
         >
             <div className="logo"/>
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['2']}>
-                <Menu.Item key="1" icon={<AuditOutlined  />} onClick={()=> router.push('/addelection')}>
-                    Add election
+            <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>              
+                <Menu.Item key="1" icon={<HomeFilled />} onClick={()=> router.push('/')}>
+                    Home
                 </Menu.Item>
 
-                <Menu.Item key="2" icon={<UserAddOutlined /> } onClick={()=> router.push('/addcandidate')}>
-                    Add candidate
-                </Menu.Item>
-
-                <Menu.Item key="3" icon={<ClockCircleOutlined /> } onClick={()=> router.push('/runningelection')}>
-                    Running Election
-                </Menu.Item>
-
-
-                <Menu.Item key="4" icon={<BarChartOutlined/>}onClick={()=> router.push('/electionresults')}>
+                <Menu.Item key="2" icon={<BarChartOutlined/>}onClick={()=> router.push('/electionresults')}>
                     See Results
                 </Menu.Item>
 
-                <Menu.Item key="5" icon={<StopFilled/>}onClick={()=> router.push('/stopelection')}>
-                    Stop Election
-                </Menu.Item>
-
-                <Menu.Item key="6" icon={<LogoutOutlined />}onClick={() => logout()} >
-
-                    Log Out
-                </Menu.Item>
+              
 
             </Menu>
         </Sider>

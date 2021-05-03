@@ -1,10 +1,18 @@
 //import Sider from "antd/es/layout/Sider";
+//Leftsidebarcastvote.js
 import {Layout, Menu} from "antd";
 import {useRouter} from "next/router";
 import {
     AppstoreOutlined,
-    BarChartOutlined,
-    CloudOutlined, FontColorsOutlined, LoginOutlined, LogoutOutlined, ShopOutlined, SolutionOutlined, TeamOutlined,
+    BarChartOutlined, ClockCircleOutlined,
+    CloudOutlined,
+    FontColorsOutlined,
+    LoginOutlined,
+    LogoutOutlined,
+    ShopOutlined,
+    SolutionOutlined,
+    TeamOutlined,
+    UnorderedListOutlined,
     UploadOutlined,
     UserOutlined,
     VideoCameraOutlined
@@ -16,6 +24,25 @@ const {Sider} = Layout;
 export default function LeftSideBarCastVote() {
 
     const router =  useRouter();
+    ////
+
+
+    async function logout() {
+        // console.log("logout started");
+
+        await fetch("http://localhost:3000/logOut", {
+            method: "GET",
+            withCredentials: true,
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        await router.push("/");
+    }
+    ///
+
 
     return (
         <Sider
@@ -27,17 +54,29 @@ export default function LeftSideBarCastVote() {
             }}
         >
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-                <Menu.Item key="1" icon={<SolutionOutlined />} onClick={()=> router.push('/submitelectionid')}>
-                   Submit election Id
+                <Menu.Item key="1" icon={<SolutionOutlined />} onClick={()=> router.push('/castvote')}>
+                    CastVote
                 </Menu.Item>
-                <Menu.Item key="2" icon={<BarChartOutlined/>}onClick={()=> router.push('/electionresults')}>
+
+
+                <Menu.Item key="2" icon={<ClockCircleOutlined /> } onClick={()=> router.push('/runningelection')}>
+                    Running Election
+                </Menu.Item>
+                <Menu.Item key="3" icon={<BarChartOutlined/>}onClick={()=> router.push('/submitresultelectionid')}>
                     See Results
                 </Menu.Item>
 
-                <Menu.Item key="3" icon={<LogoutOutlined />}onClick={()=> router.push('/')}>
+                <Menu.Item key="4" icon={<UnorderedListOutlined />}onClick={()=> router.push('/submitelectionid')}>
+                   See Candidates
+                </Menu.Item>
+
+
+                <Menu.Item key="5" icon={<LogoutOutlined />}onClick={() => logout()} >
+
                     Log Out
                 </Menu.Item>
 
+                
             </Menu>
         </Sider>
     )

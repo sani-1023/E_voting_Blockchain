@@ -1,18 +1,19 @@
-//import Sider from "antd/es/layout/Sider";
+
+//Leftsidebarsubmitelectionid.js
 import {Layout, Menu} from "antd";
 import {useRouter} from "next/router";
 import {
-    AppstoreOutlined, AuditOutlined,
+    AppstoreOutlined,
     BarChartOutlined, ClockCircleOutlined,
     CloudOutlined,
     FontColorsOutlined,
     LoginOutlined,
     LogoutOutlined,
     ShopOutlined,
-    SolutionOutlined, StopFilled,
-    StopOutlined,
+    SolutionOutlined,
     TeamOutlined,
-    UploadOutlined, UserAddOutlined,
+    UnorderedListOutlined,
+    UploadOutlined,
     UserOutlined,
     VideoCameraOutlined
 } from "@ant-design/icons";
@@ -20,14 +21,14 @@ import {
 const {Sider} = Layout;
 
 
-export default function LeftSideBarAddcandidate() {
+export default function Leftsidebarsubmitelectionid() {
 
     const router =  useRouter();
 
     async function logout() {
         // console.log("logout started");
 
-        await fetch("http://localhost:3000/adminLogOut", {
+        await fetch("http://localhost:3000/logOut", {
             method: "GET",
             withCredentials: true,
             credentials: "include",
@@ -50,33 +51,29 @@ export default function LeftSideBarAddcandidate() {
                 left: 0,
             }}
         >
-            <div className="logo"/>
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['2']}>
-                <Menu.Item key="1" icon={<AuditOutlined  />} onClick={()=> router.push('/addelection')}>
-                    Add election
+            <Menu theme="dark" mode="inline" defaultSelectedKeys={['3']}>
+                <Menu.Item key="1" icon={<SolutionOutlined />} onClick={()=> router.push('/castvote')}>
+                    CastVote
                 </Menu.Item>
 
-                <Menu.Item key="2" icon={<UserAddOutlined /> } onClick={()=> router.push('/addcandidate')}>
-                    Add candidate
-                </Menu.Item>
-
-                <Menu.Item key="3" icon={<ClockCircleOutlined /> } onClick={()=> router.push('/runningelection')}>
+                <Menu.Item key="2" icon={<ClockCircleOutlined /> } onClick={()=> router.push('/runningelection')}>
                     Running Election
                 </Menu.Item>
 
-
-                <Menu.Item key="4" icon={<BarChartOutlined/>}onClick={()=> router.push('/electionresults')}>
+                <Menu.Item key="3" icon={<BarChartOutlined/>}onClick={()=> router.push('/submitresultelectionid')}>
                     See Results
                 </Menu.Item>
 
-                <Menu.Item key="5" icon={<StopFilled/>}onClick={()=> router.push('/stopelection')}>
-                    Stop Election
+                <Menu.Item key="4" icon={<UnorderedListOutlined />}onClick={()=> router.push('/submitelectionid')}>
+                    See Candidates
                 </Menu.Item>
 
-                <Menu.Item key="6" icon={<LogoutOutlined />}onClick={() => logout()} >
+
+                <Menu.Item key="5" icon={<LogoutOutlined />}onClick={() => logout()} >
 
                     Log Out
                 </Menu.Item>
+
 
             </Menu>
         </Sider>
