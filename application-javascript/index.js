@@ -1,3 +1,5 @@
+//index.js
+
 "use strict";
 
 const { Gateway, Wallets } = require("fabric-network");
@@ -110,7 +112,7 @@ async function main() {
         //const id = user_${email};
 
         try {
-          res.cookie("user", null, { maxAge: -1, httpOnly: true });
+          res.cookie("admin", null, { maxAge: -1, httpOnly: true });
           //res.send("You have successfully Logged out");
           // //let users = JSON.parse(queryResult.toString());
           res.send("You have successfully logged out");
@@ -272,12 +274,14 @@ async function main() {
 
       app.post("/stopElection", async function (req, res) {
         const { electionId } = req.body;
+
         try {
           //   //loginUser(ctx, email, password)
           const result = await contract.evaluateTransaction(
             "stopElectionAndStoreResult",
             electionId
           );
+
 
           let obj = JSON.parse(result);
 
@@ -307,6 +311,9 @@ async function main() {
             electionId
           );
 
+
+
+
           //fetch the election name and electionid
           let electionObj = JSON.parse(resultElection);
           let electionName = electionObj[0]["Record"]["electionName"];
@@ -319,12 +326,27 @@ async function main() {
           // ------ async addResult(ctx, electionId, electionName, resultObj) -----
 
           //creating result
-          await contract.submitTransaction(
+
+          let final = await contract.evaluateTransaction( "electionIdResult",
+              electionId,
+          );
+
+          let finalObj = JSON.parse(final);
+          res.cookie("electionidresultc", final.toString(), {
+            maxAge: 3600_000,
+            httpOnly: true,
+          });
+
+           await contract.submitTransaction(
             "addResult",
             electionId1,
             electionName,
             myJSON
           );
+
+
+
+
 
           //--------         async changeElectionId(ctx, preElectionId,newElectionId) function------
           //changing the existing electionid to new one
@@ -343,6 +365,7 @@ async function main() {
           //res.send(result1);
 
           // //let users = JSON.parse(queryResult.toString());
+         // res.json(finalObj);
          res.send("The election is stoppped and result is ready!");
         
         } catch (error) {
@@ -370,19 +393,37 @@ async function main() {
         }
       });
 
-      app.get("/seeCandidates/:electionId", async function (req, res) {
+      //********* see candidates */((((((((((kaaajj))))))))))
 
-        const electionId = req.params.electionId;
+      app.post("/seeCandidates", async function (req, res) {
+
+        
+        //const electionid = electionidc1.electionId.toString();
         //const id = user_${email};
 
         try {
+          let electionidc1 = JSON.parse(req.cookies.electionidc.toString());
+
+          // if(electionidc1.keys.length === 0){
+          //   throw new Error(`Invalid election or no candidate exist`);
+          // }
+         
+          let electionId = electionidc1[0]["Record"]["electionId"];
+
           let result = await contract.evaluateTransaction(
               "FindCandidateByElectionKey",
               electionId
           );
 
+
+
           let obj = JSON.parse(result);
-          res.send(obj);
+          res.json(obj);
+
+         //res.cookie("electionidc1", null, { maxAge: -1, httpOnly: true });
+
+
+
 
         } catch (error) {
           res
@@ -390,6 +431,124 @@ async function main() {
               .json({error: error.toString()});
         }
       });
+
+     //**submit election id***(extra) */((((((((((Kaaaj))))))))))
+
+     app.post("/submitelectionid", async function (req, res) {
+      const { electionId } = req.body;
+      //const id = user_${email};
+
+      try {
+        //loginUser(ctx, email, password)
+        let result = await contract.evaluateTransaction(
+          "FindCandidateByElectionKey",
+          electionId
+       );
+
+        res.cookie("electionidc", result.toString(), {
+          maxAge: 3600_000,
+          httpOnly: true,
+        });
+
+        // //let users = JSON.parse(queryResult.toString());
+        let obj = JSON.parse(result);
+        res.json(obj);
+
+      } catch (error) {
+          res
+              .status(400)
+              .json({error: error.toString()});
+        }
+    });
+
+      //**submit election id result***(extra) */((((((((((Kaaaj))))))))))
+
+      app.post("/submitresultelectionid", async function (req, res) {
+        const { electionId } = req.body;
+        //const id = user_${email};
+
+        try {
+          let result = await contract.evaluateTransaction(
+              "electionIdResult",
+              electionId
+          );
+
+          res.cookie("electionidresultc", result.toString(), {
+            maxAge: 3600_000,
+            httpOnly: true,
+          });
+
+          // //let users = JSON.parse(queryResult.toString());
+          let obj = JSON.parse(result);
+          res.json(obj);
+
+        } catch (error) {
+          res
+              .status(400)
+              .json({error: error.toString()});
+        }
+      });
+
+      //********* see result election id */((((((((((kaaajj))))))))))
+
+      app.post("/seeresultelectionid", async function (req, res) {
+
+
+        //const electionid = electionidc1.electionId.toString();
+        //const id = user_${email};
+
+        try {
+          let electionidc1 = JSON.parse(req.cookies.electionidresultc.toString());
+
+          // if(electionidc1.keys.length === 0){
+          //   throw new Error(`Invalid election or no candidate exist`);
+          // }
+
+          let electionId = electionidc1[0]["Record"]["key"];
+
+          let result = await contract.evaluateTransaction(
+              "electionIdResult",
+              electionId
+          );
+
+          let obj = JSON.parse(result);
+          res.json(obj);
+
+          //res.cookie("electionidc1", null, { maxAge: -1, httpOnly: true });
+
+        } catch (error) {
+          res
+              .status(400)
+              .json({error: error.toString()});
+        }
+      });
+
+      ///get running election list
+      app.get("/runningElection", async function (req, res) {
+        try {
+          let result = await contract.evaluateTransaction("getRunningElection");
+
+          let obj = JSON.parse(result);
+          // let results=JSON.stringyfy(obj);
+
+
+
+          res.send(obj);
+        } catch (error) {
+          res
+              .status(400)
+              .json({error: error.toString()});
+        }
+      });
+
+
+
+
+
+
+
+
+
 
       app.get("/seeResults", async function (req, res) {
         try {
@@ -410,7 +569,7 @@ async function main() {
           }
 
           //let resultObj1 = Object.fromEntries(electionResultmap);
-         // const myJSON1 = JSON.stringyfy(resultObj1);
+         // const myJSON1 = JSON.stringify(resultObj1);
 
           res.send(obj);
         } catch (error) {
@@ -419,6 +578,9 @@ async function main() {
               .json({error: error.toString()});
         }
       });
+
+
+
 
 
 
