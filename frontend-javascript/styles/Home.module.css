@@ -155,14 +155,15 @@
   cursor: pointer;
   border-radius: 15px;
 
-  background-color: rgba(166, 217, 142, 0.46);
-  color: black;
+  background-color: #4CAF50;
+  color: white;
+
   border: 2px solid #4CAF50;
 }
 
 .button1:hover {
-  background-color: #4CAF50;
-  color: white;
+  background-color: rgba(144, 218, 109, 0.692);
+  color: black;
 }
 
 .button2 {
@@ -181,15 +182,16 @@
   transition-duration: 0.4s;
   cursor: pointer;
   border-radius: 15px;
+  background-color: #008CBA;
+  color: white;
 
-  background-color: #89c2ae;
-  color: black;
   border: 2px solid #008CBA;
 }
 
 .button2:hover {
-  background-color: #008CBA;
-  color: white;
+
+  background-color: #89c2ae;
+  color: black;
 }
 
 .button3 {
@@ -207,16 +209,20 @@
   width: 150px;
   transition-duration: 0.4s;
   cursor: pointer;
-  background-color: rgba(220, 106, 106, 0.96);
+
+  background-color: #f44336;
+  color: white;
+
   border-radius: 15px;
 
-  color: black;
+
   border: 2px solid #f44336;
 }
 
 .button3:hover {
-  background-color: #f44336;
-  color: white;
+
+  background-color: rgba(220, 106, 106, 0.96);
+  color: black;
 }
 
 .button4 {
@@ -236,30 +242,97 @@
   cursor: pointer;
   border-radius: 15px;
 
-  background-color: #89c2ae;
-  color: black;
+
+  background-color: #008CBA;
+  color: white;
+
   border: 2px solid #008CBA;
 }
 
 .button4:hover {
-  background-color: #008CBA;
-  color: white;
+  background-color: #89c2ae;
+  color: black;
 }
+
+
+.button5 {
+
+  background-color: #051252; /* Green */
+  border: none;
+  color: rgba(24, 231, 207, 0.8);
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  height: 38px;
+  width: 350px;
+  margin-left: 35px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 15px;
+
+  background-color: #17265a;
+  color: white;
+
+  border: 2px solid #aef3f1;
+}
+
+.button5:hover {
+  background-color: rgba(59, 160, 132, 0.88);
+  color: black;
+  border: 2px solid #06334b;
+
+
+}
+
+.button6 {
+
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding-top: 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 95px;
+  height: 40px;
+  width: 100px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+
+  background-color: #f44336;
+  color: white;
+
+  border-radius: 15px;
+
+
+  border: 2px solid #f44336;
+}
+
+.button6:hover {
+
+  background-color: rgba(220, 106, 106, 0.96);
+  color: black;
+}
+
 .shadowbox {
-  width: 82em;
+  width: 85%;
   border: 1px solid #333;
   box-shadow: 8px 8px 5px #444;
   padding: 50px 20px;
   margin-left: auto;
   align-content: center;
-  background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
+  border-radius: 25px;
+  background-image: linear-gradient(180deg, #fff, rgb(41, 177, 201) 30%, rgba(30, 80, 74, 0.98));
 }
 .shadowbox1 {
   border: 1px solid #333;
   box-shadow: 8px 8px 5px #444;
   align-content: center;
   margin: auto;
-  width: 55%;
+  width: 85%;
   padding: 100px;
   border-radius: 25px;
 
@@ -279,17 +352,18 @@
   background-image: linear-gradient(180deg, #fff, #ddd 40%, rgba(66, 130, 123, 0.98));
 }
 
-.shadowbox1 {
+.shadowbox5 {
   border: 1px solid #333;
   box-shadow: 8px 8px 5px #444;
   align-content: center;
   margin: auto;
   width: 70%;
-  padding: 100px;
+  padding: 80px;
   border-radius: 25px;
+  font-weight: bolder;
 
 
-  background-image: linear-gradient(180deg, #fff, rgb(41, 177, 201) 30%, rgba(30, 80, 74, 0.98));
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgb(53, 158, 167) 30%, rgba(7, 13, 23, 0.98));
 }
 .card2 {
   flex-basis: 45%;
@@ -302,7 +376,9 @@
   text-decoration: none;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   border-radius: 10px;
-  background-color: rgba(3, 76, 90, 0.73);
+  color: #fdfdfd;
+  background-color: #043c45;
+
   box-shadow: 8px 8px 2px #444;
 
   transition: color 0.15s ease, border-color 0.15s ease;
@@ -310,11 +386,24 @@
 .card2:hover,
 .card2:focus,
 .card2:active {
-  color: #fdfdfd;
+  color: rgba(11, 30, 69, 0.95);
+  background-color: rgba(128, 232, 222, 0.62);
+
+
   border-color: #0070f3;
-  background-color: #043c45;
+
 }
 .bg{
   background-color: #0070f3;
 
+}
+
+.shift
+{
+  margin-left: 40rem;
+
+}
+.shift1
+{
+  margin-left: 5rem;
 }
