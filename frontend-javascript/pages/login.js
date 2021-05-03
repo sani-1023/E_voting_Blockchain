@@ -1,5 +1,8 @@
+
+//login
 import {Button, Form, Input} from 'antd';
 import {useRouter} from "next/router";
+import Leftsidebarlogin from "../components/Leftsidebarlogin";
 import styles from "../styles/Home.module.css";
 
 
@@ -66,7 +69,8 @@ export default function LoginPage() {
     return (
 
         <div>
-        <div className={styles.shadowbox1}>
+            <Leftsidebarlogin/>
+        <div className={styles.shadowbox5}>
 
             <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
 
@@ -101,9 +105,9 @@ export default function LoginPage() {
                 </Form.Item>
 
                 <Form.Item wrapperCol={{...layout.wrapperCol, offset: 4}}>
-                    <Button type="primary" htmlType="submit" >
+                    <button  className={styles.button5} type="primary" htmltype="submit" >
                         Log In
-                    </Button>
+                    </button>
                 </Form.Item>
             </Form>
 
