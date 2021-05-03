@@ -1,17 +1,17 @@
 
 
-////
+////castvote
 import { Form, Input, InputNumber, Button } from 'antd';
 
 import {useRouter} from "next/router";
-import Leftsidebarsubmitelectionid from "../components/Leftsidebarsubmitelectionid";
+import Leftsidebarcastvote from "../components/Leftsidebarcastvote";
 import styles from "../styles/Home.module.css";
 const layout = {
     labelCol: {
         span: 8,
     },
     wrapperCol: {
-        span: 10,
+        span: 12,
     },
 };
 /* eslint-disable no-template-curly-in-string */
@@ -65,7 +65,7 @@ export default function castVotePage() {
         else
         {
             alert('Your vote has been cast');
-            await router.push('/electionresults');
+            await router.push('/submitresultelectionid');
         }
 
 
@@ -75,9 +75,9 @@ export default function castVotePage() {
 
    <>
 
-            <Leftsidebarsubmitelectionid/>
+            <Leftsidebarcastvote/>
 
-       <div className={styles.shadowbox1}>
+       <div className={styles.shadowbox5}>
 
            <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
 
@@ -109,9 +109,9 @@ export default function castVotePage() {
 
 
                <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8}}>
-                   <Button type="primary" htmlType="submit">
+                   <button className={styles.button5} type="primary" htmltype="submit">
                        Cast Vote
-                   </Button>
+                   </button>
                </Form.Item>
            </Form>
 

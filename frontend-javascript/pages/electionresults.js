@@ -1,4 +1,6 @@
 
+
+//electionresults
 import React from "react";
 import styles from "../styles/Home.module.css";
 
@@ -48,7 +50,6 @@ export default class ElectionResultsPage extends React.Component {
                 ))
 
                 }
-
             </div>
     );
 
