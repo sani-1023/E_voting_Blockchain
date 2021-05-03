@@ -1,11 +1,12 @@
 
 ////register
-import { Form, Input, InputNumber, Button } from "antd";
+import {Form, Input, InputNumber, Button, Menu} from "antd";
 import styles from "../styles/Home.module.css";
-import Leftsidebarsubmitelectionid from "../components/Leftsidebarsubmitelectionid";
+import Leftsidebarsubmitresultelectionid from "../components/Leftsidebarsubmitresultelectionid";
 
 
 import { useRouter } from "next/router";
+import {BarChartOutlined} from "@ant-design/icons";
 
 const layout = {
   labelCol: {
@@ -29,7 +30,7 @@ const validateMessages = {
 };
 /* eslint-enable no-template-curly-in-string */
 
-export default function SubmitElectionId() {
+export default function SubmitResultElectionId() {
   const router = useRouter();
 
   const onFinish = async (values) => {
@@ -37,7 +38,7 @@ export default function SubmitElectionId() {
 
     const { electionId } = values.user;
 
-    const url = "http://localhost:3000/submitelectionid";
+    const url = "http://localhost:3000/submitresultelectionid";
 
     const requestBody = {
      
@@ -61,13 +62,13 @@ export default function SubmitElectionId() {
     if ("error" in data) {
       alert("No election Found");
     } else {
-      await router.push("/seecandidate");
+      await router.push("/seeresultelectionid");
     }
   };
 
   return (
      <>
-      <Leftsidebarsubmitelectionid/>
+      <Leftsidebarsubmitresultelectionid/>
     <div className={styles.shadowbox5}>
       <Form
         {...layout}
@@ -94,6 +95,15 @@ export default function SubmitElectionId() {
           </button>
         </Form.Item>
       </Form>
+
+      <div className={styles.shift}>
+
+        <button className={styles.button1} onClick={()=> router.push('/electionresults')}>
+          All results
+        </button>
+
+      </div>
+
     </div>
 
        </>

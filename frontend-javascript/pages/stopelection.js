@@ -1,10 +1,13 @@
+
+//stopelection
+
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import LeftSideBarStopElection from "../components/Leftsidebarstopelection";
 import React, { useState } from 'react';
 import { Form, Input, Button, Radio } from 'antd';
 import {useRouter} from "next/router";
-import { json } from 'body-parser';
+
 
 
 const layout = {
@@ -56,7 +59,7 @@ export default function StopElectionPage() {
         if(comp === data)
         {
             alert("election has been stopped");
-            await router.push('/electionresults');
+            await router.push('/seeresultelectionid');
         }
         else
         {
@@ -70,7 +73,7 @@ export default function StopElectionPage() {
     return (
         <>
             <LeftSideBarStopElection/>
-            <div className={styles.shadowbox1}>
+            <div className={styles.shadowbox5}>
 
                 <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
 
@@ -86,9 +89,9 @@ export default function StopElectionPage() {
                         <Input/>
                     </Form.Item>
                     <Form.Item wrapperCol={{...layout.wrapperCol, offset: 6}}>
-                        <Button type="primary" htmlType="submit" >
-                            STOP
-                        </Button>
+                        <button className={styles.button6} type="primary" htmltype="submit" >
+                            Stop
+                        </button>
                     </Form.Item>
                 </Form>
 
