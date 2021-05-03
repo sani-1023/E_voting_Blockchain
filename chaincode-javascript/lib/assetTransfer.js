@@ -210,14 +210,16 @@ class AssetTransfer extends Contract {
             flag = 0;
         }
 
-        if ((!userBytes || userBytes.length === 0 ) && flag===1 && ElectionId ===electionId) {
+        if ((!userBytes || userBytes.length === 0 ) && flag===1 && ElectionId === electionId) {
             await ctx.stub.putState(tmpVoteId, Buffer.from(JSON.stringify(vote)));
+
+
         }
         else {
             throw new Error(`You cant vote`);
         }
 
-
+      ////pore dekhbo
         return JSON.stringify(vote);
 
         console.info('============= END : cast vote ===========');
@@ -277,7 +279,7 @@ class AssetTransfer extends Contract {
 
     }
 
-    // collect electioninfo using electionid
+
     async electionInfo(ctx, electionId) {
 
 
@@ -289,6 +291,21 @@ class AssetTransfer extends Contract {
 
 
     }
+
+    //get electionresult from electionid
+    async electionIdResult(ctx, electionId) {
+
+
+        let queryString = {};
+        queryString.selector = {};
+        queryString.selector.docType = 'resultHistory';
+        queryString.selector.key = electionId;
+        return await this.GetQueryResultForQueryString(ctx, JSON.stringify(queryString));
+
+
+    }
+
+
     //  add result of any election  to database
     async addResult(ctx, electionId, electionName, resultObj) {
         console.info('============= START : addResult ===========');
@@ -379,6 +396,40 @@ class AssetTransfer extends Contract {
         }
 
     }
+
+    //get running election
+
+    async getRunningElection(ctx) {
+        let queryString = {};
+        queryString.selector = {};
+        queryString.selector.docType = 'election';
+        let result  =  await this.GetQueryResultForQueryString(ctx, JSON.stringify(queryString));
+        let obj = JSON.parse(result);
+        let size = Object.keys(obj).length;
+        let arr = [];
+        for (var i in obj) {
+            let electionKey = obj[i]["Record"]["key"];
+            let electionId = obj[i]["Record"]["electionId"];
+            if(electionKey === electionId)
+            {
+                arr.push(obj[i]);
+            }
+
+        }
+         //let obj1 =  Object.assign({}, arr); // {0:"a", 1:"b", 2:"c"}
+
+        if(size === 0)
+        {
+            throw new Error(`No results`);
+        }
+        else
+        {
+            return arr;
+        }
+
+    }
+
+
 
 
 
