@@ -1,3 +1,5 @@
+//admin
+
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
@@ -16,7 +18,7 @@ const layout = {
         span: 4,
     },
     wrapperCol: {
-        span: 16,
+        span: 12,
     },
 };
 /* eslint-disable no-template-curly-in-string */
@@ -73,7 +75,7 @@ export default function AdminPage() {
 
     return (
 
-        <div className={styles.shadowbox1}>
+        <div className={styles.shadowbox5}>
         <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
 
             <Form.Item
@@ -109,9 +111,9 @@ export default function AdminPage() {
             </Form.Item>
 
             <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 4}}>
-                <Button type="primary" htmlType="submit" >
+                <button className={styles.button5} type="primary" htmltype="submit" >
                     Log In
-                </Button>
+                </button>
             </Form.Item>
         </Form>
         </div>

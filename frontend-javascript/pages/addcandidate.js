@@ -1,3 +1,5 @@
+
+//addcandidate
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import LeftSideBarAddCandidate from "../components/Leftsidebaraddcandidate";
@@ -12,7 +14,7 @@ const layout = {
         span: 6,
     },
     wrapperCol: {
-        span: 10,
+        span: 12,
     },
 };
 const validateMessages = {
@@ -23,7 +25,7 @@ const validateMessages = {
     },
 };
 
-export default function AddElectionPage() {
+export default function AddCandidatePage() {
 
     const router =  useRouter();
 
@@ -72,7 +74,7 @@ export default function AddElectionPage() {
     return (
         <>
             <LeftSideBarAddCandidate/>
-            <div className={styles.shadowbox}>
+            <div className={styles.shadowbox5}>
 
                 <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
 
@@ -126,14 +128,16 @@ export default function AddElectionPage() {
                         <Input/>
                     </Form.Item>
                     <Form.Item wrapperCol={{...layout.wrapperCol, offset: 6}}>
-                        <Button type="primary" htmlType="submit" >
+                        <button className={styles.button5} type="primary" htmltype="submit" >
                             Submit
-                        </Button>
+                        </button>
                     </Form.Item>
                     <Form.Item wrapperCol={{...layout.wrapperCol, offset: 18}}>
+                        <div className={styles.shift1}>
                         <Button type="primary" icon={<CheckCircleFilled />} className={styles.button1} onClick={()=> router.push('/stopelection')}>
                             Complete
                         </Button>
+                        </div>
                     </Form.Item>
                 </Form>
 

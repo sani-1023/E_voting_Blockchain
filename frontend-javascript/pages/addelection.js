@@ -1,4 +1,4 @@
-
+//addelection
 
 import styles from '../styles/Home.module.css'
 import LeftSideBarAddElection from "../components/Leftsidebaraddelection";
@@ -12,7 +12,7 @@ const layout = {
         span: 6,
     },
     wrapperCol: {
-        span: 10,
+        span: 12,
     },
 };
 const validateMessages = {
@@ -67,7 +67,7 @@ export default function AddElectionPage() {
     return (
         <>
             <LeftSideBarAddElection/>
-            <div className={styles.shadowbox1}>
+            <div className={styles.shadowbox5}>
 
                 <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
 
@@ -109,9 +109,9 @@ export default function AddElectionPage() {
                         <Input/>
                     </Form.Item>
                     <Form.Item wrapperCol={{...layout.wrapperCol, offset: 6}}>
-                        <Button type="primary" htmlType="submit" >
+                        <button className={styles.button5} type="primary" htmltype="submit" >
                             Submit
-                        </Button>
+                        </button>
                     </Form.Item>
                 </Form>
 
