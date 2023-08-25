@@ -1,6 +1,6 @@
 # E_voting_Blockchain
 
-This is an evoting system using hyperledger fabric
+This is an evoting system using hyperledger fabric.It is a voting online web application. It provides voters and election candidates a fair election process.
 
 
 # Prerequisites: (Git, Curl, Docker, Docker-compose)
