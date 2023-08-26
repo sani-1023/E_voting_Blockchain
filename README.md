@@ -63,10 +63,6 @@ Username: admin
 Password: adminpw
 
 
-
-
-
-
 # For frontend
 
 cd $HOME/fabric-samples/E_voting_Blockchain/frontend-javascript
@@ -74,6 +70,41 @@ cd $HOME/fabric-samples/E_voting_Blockchain/frontend-javascript
 npm run dev -- -p 3001
 
 open the browser & go to http://localhost:3001 to view the UI.
+
+# project structure:
+<p  align="center"  >
+<img  src="project_pictures/overall_sys.png"  height = "400"/> </p>
+<p  align="center"  >
+<img  src="project_pictures/Admin_Diagram.png"  height = "400"/> </p>
+<p  align="center"  >
+<img  src="project_pictures/voter_diagram.png"  height = "400"/> </p>
+
+# Some Screenshots of the projects:
+
+<p  align="center"  >
+<img  src="project_pictures/firstpage.png"  height = "400"/> </p>
+<p  align="center"  >
+<img  src="project_pictures/admin.png"  height = "400"/> </p>
+<p  align="center"  >
+<img  src="project_pictures/addelection.png"  height = "400"/> </p>
+<p  align="center"  >
+<img  src="project_pictures/addcandidate.png"  height = "400"/> </p>
+<p  align="center"  >
+<img  src="project_pictures/endelection.png"  height = "400"/> </p>
+<p  align="center"  >
+<img  src="project_pictures/voterlogin.png"  height = "400"/> </p>
+<p  align="center"  >
+<img  src="project_pictures/seecandidate.png"  height = "400"/> </p>
+<p  align="center"  >
+<img  src="project_pictures/seecandidate1.png"  height = "400"/> </p>
+<p  align="center"  >
+<img  src="project_pictures/castvote.png"  height = "400"/> </p>
+
+
+
+
+
+
 
 
 
